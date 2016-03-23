@@ -1,0 +1,67 @@
+$size: 30px;
+$border-size: 3px;
+$color: #FFFFFF;
+$background-url: url("../../assets/images/fundo_cabecalho.png");
+$transparent-background: transparent;
+#navigation, .navbar .navbar-default, .navbar-static-top {
+  background-image: $background-url;
+
+  .navbar-nav {
+    width: 100%;
+    text-align: center;
+    & li {
+      float: none;
+      display: inline-block;
+      & a {
+        color: $color;
+        background-color: $transparent-background;
+      }
+      &.active > a, .active > a:hover, .active > a:focus {
+        color: $color;
+        background: $transparent-background;
+        margin: 0;
+      }
+    }
+    > li.active:after, li.active:before {
+      bottom: 0%;
+      margin-bottom: -2px;
+      left: 50%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+    }
+    > li .active:after {
+      border-bottom-color: #fff;
+      border-width: 6px;
+      margin-left: -6px;
+      z-index: 1;
+    }
+    > li .active:before {
+      border-bottom-color: green;
+      border-width: 9px;
+      margin-left: -9px;
+      z-index: 1;
+    }
+  }
+
+  .navbar-inner {
+    padding: 0;
+  }
+  .nav {
+    margin: 0;
+    width: 100%;
+    > li {
+      display: table-cell;
+      width: 2%;
+      float: none;
+      > a {
+        font-weight: bold;
+        text-align: center;
+      }
+    }
+  }
+}
+
