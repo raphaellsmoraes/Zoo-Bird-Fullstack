@@ -8,7 +8,7 @@ class NavbarController {
   },
     {
       'title': 'QUEM SOMOS',
-      'link': '/about'
+      'link': '/aboutus'
     },
     {
       'title': 'VIVEIRO',

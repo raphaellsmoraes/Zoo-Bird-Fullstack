@@ -2,6 +2,9 @@
 angular.module('zoobirdApp', [
     'zoobirdApp.auth',
     'zoobirdApp.admin',
+    'zoobirdApp.aboutus',
+    'zoobirdApp.diferencial',
+    'zoobirdApp.contact',
     'zoobirdApp.constants',
     'ngCookies',
     'ngResource',

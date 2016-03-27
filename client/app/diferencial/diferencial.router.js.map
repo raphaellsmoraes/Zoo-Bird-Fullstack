@@ -1,0 +1,1 @@
+{"version":3,"file":"diferencial.router.js","sourceRoot":"","sources":["diferencial.router.ts"],"names":[],"mappings":"AAAA,YAAY,CAAC;AAEb,OAAO,CAAC,MAAM,CAAC,wBAAwB,CAAC;KACrC,MAAM,CAAC,UAAU,cAAc;IAC9B,cAAc;SACX,IAAI,CAAC,cAAc,EAAE;QACpB,WAAW,EAAE,kCAAkC;QAC/C,UAAU,EAAE,gBAAgB;QAC5B,YAAY,EAAE,aAAa;KAC5B,CAAC,CAAC;AACP,CAAC,CAAC,CAAC"}

@@ -9,6 +9,9 @@
         "client/typings/**/*.d.ts"
     ],
     "files": [
+        "client/app/aboutus/aboutus.controller.ts",
+        "client/app/aboutus/aboutus.module.ts",
+        "client/app/aboutus/aboutus.router.ts",
         "client/app/account/account.ts",
         "client/app/account/login/login.controller.ts",
         "client/app/account/settings/settings.controller.ts",
@@ -17,6 +20,12 @@
         "client/app/admin/admin.module.ts",
         "client/app/admin/admin.router.ts",
         "client/app/app.ts",
+        "client/app/contato/contact.controller.ts",
+        "client/app/contato/contact.module.ts",
+        "client/app/contato/contact.router.ts",
+        "client/app/diferencial/diferencial.controller.ts",
+        "client/app/diferencial/diferencial.module.ts",
+        "client/app/diferencial/diferencial.router.ts",
         "client/app/main/main.controller.ts",
         "client/app/main/main.ts",
         "client/components/auth/auth.module.ts",

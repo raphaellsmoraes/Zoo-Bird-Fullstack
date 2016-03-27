@@ -1,0 +1,73 @@
+<header class="hero-unit" id="banner">
+  <img class="img-responsive center-block" src="../../assets/images/section_header_aboutus.png">
+</header>
+
+<div class="background-section">
+  <div class="row" style="margin:0">
+    <img class="img-responsive center-block" style="position: absolute" src="../../assets/images/background_leafs.png">
+
+    <div class="foreground-section" style="padding-bottom: 5%; margin-top: 0">
+      <!-- Contact Info -->
+      <div class="col-md-offset-1 col-lg-offset-1 col-xs-12 col-sm-12 col-md-4 col-lg-4 text-left"
+           style="margin-top: 12%;">
+        <h2>ENTRE EM CONTATO</h2>
+        <h3>Fale conosco</h3>
+        <h4>mauriciozoobird@outlook.com</h4>
+        <h4>+55 (19) 9 9601 3456
+          <img style="width: 25px; display: initial; padding: 3px; margin-left: 1%"
+               src="../../assets/images/logooi.png"
+               class="img-responsive"/>
+        </h4>
+        <h4>+55 (19) 9 8733 2750
+          <img style="width: 25px; display: initial; padding: 3px; margin-left: 1%"
+               src="../../assets/images/logovivo.png"
+               class="img-responsive"/>
+        </h4>
+        <p class="text-center" style="margin-top: 15%">Rod. Edenor João Tasca, nº 4377 <br> Caixa D'Água - Vinhedo -
+          SP
+          <br>(estrada antiga Vinhedo/Itatiba)</p>
+      </div>
+
+      <!-- Map section -->
+      <div class="col-md-6 col-lg-6 flexible-container" style="margin-top: 5%">
+        <iframe class="center-block"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3672.094700562182!2d-46.915559084895726!3d-23.02029484771891!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cf2c90fdfb423d%3A0xe6880cf1e5e1a837!2sRod.+Edenor+Jo%C3%A3o+Tasca%2C+4377%2C+Vinhedo+-+SP%2C+13280-000!5e0!3m2!1spt-BR!2sbr!4v1459047213172"
+                width="700" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <!-- Form section -->
+    <div class="col-md-offset-3 col-lg-offset-3 col-md-6 col-lg-6" style="margin-top: -20%">
+      <form>
+        <div class="form-group">
+          <input type="text" class="form-control" id="contactName" placeholder="NOME:"
+                 ng-model="vm.user.name">
+        </div>
+        <div class="form-group">
+          <input type="email" class="form-control" id="contactEmail" placeholder="EMAIL:"
+                 ng-model="vm.user.email">
+        </div>
+        <div class="form-group col-md-4 col-lg-4" style="padding: 0">
+          <input type="tel" class="form-control" id="contactTel" placeholder="TEL:"
+                 ng-model="vm.user.tel">
+        </div>
+        <div class="form-group col-md-4 col-lg-4" style="padding: 0">
+          <input type="text" class="form-control" id="contactCity" placeholder="CIDADE:"
+                 ng-model="vm.user.city">
+        </div>
+        <div class="form-group col-md-4 col-lg-4" style="padding: 0">
+          <input type="text" class="form-control" id="contactSubject" placeholder="ASSUNTO:"
+                 ng-model="vm.user.subject">
+        </div>
+        <div class="form-group">
+            <textarea class="form-control" id="contactMessage" ng-maxlength="4096" maxlength="4096"
+                      placeholder="MENSAGEM"
+                      ng-model="vm.user.message"></textarea>
+        </div>
+        <button type="submit" class="btn btn-default center-block" ng-click="vm.submit(vm.user)"
+                style="margin-bottom: 2%">Enviar
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

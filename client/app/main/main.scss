@@ -26,13 +26,21 @@
 }
 
 .background-section {
-  background-image: url("../../assets/images/fundo_default_section.png  ");
+  background-image: url("../../assets/images/fundo_default_section.png");
 }
 
 .foreground-section {
   margin-top: 10%;
+
+  > div {
+    margin-bottom: 5%;
+  }
 }
 
 #container {
   width: 100%;
+}
+
+.navbar {
+  margin-bottom: 2px;
 }

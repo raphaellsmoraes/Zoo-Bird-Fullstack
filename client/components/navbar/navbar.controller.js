@@ -9,7 +9,7 @@ var NavbarController = (function () {
             },
             {
                 'title': 'QUEM SOMOS',
-                'link': '/about'
+                'link': '/aboutus'
             },
             {
                 'title': 'VIVEIRO',
