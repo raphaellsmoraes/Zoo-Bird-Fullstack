@@ -6,6 +6,7 @@ angular.module('zoobirdApp', [
     'zoobirdApp.aboutus',
     'zoobirdApp.diferencial',
     'zoobirdApp.contact',
+    'zoobirdApp.viveiro',
     'zoobirdApp.constants',
     'ngCookies',
     'ngResource',

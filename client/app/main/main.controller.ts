@@ -9,7 +9,6 @@
         || document.documentElement.clientWidth
         || document.body.clientWidth;
       this.slides = $scope.slides = [];
-      this.currIndex = 0;
       this.noWrapSlides = false;
 
       $scope.$on('$destroy', function () {
