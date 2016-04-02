@@ -1,5 +1,7 @@
 'use strict';
 
 angular.module('zoobirdApp.viveiro', [
-  'ngRoute', 'infinite-scroll'
+  'ngRoute',
+  'infinite-scroll',
+  'ngFlag'
 ]);
