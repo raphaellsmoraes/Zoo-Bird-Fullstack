@@ -4,16 +4,17 @@
 
   class MainController {
 
-    constructor($http, $scope, socket) {
+    constructor($http, $scope, socket, RevManifest) {
+      $scope.revManifest = RevManifest;
+      $scope.revManifest.getManifest().then(function (data) {
+        $scope.manifest = data;
+        console.log($scope.revManifest.path + $scope.manifest["Selo.png"]);
+      });
       this.width = window.innerWidth
         || document.documentElement.clientWidth
         || document.body.clientWidth;
       this.slides = $scope.slides = [];
       this.noWrapSlides = false;
-
-      $scope.$on('$destroy', function () {
-        socket.unsyncUpdates('thing');
-      });
     }
 
     $onInit() {
