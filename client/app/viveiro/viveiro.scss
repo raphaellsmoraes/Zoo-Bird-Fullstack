@@ -1,5 +1,4 @@
 .block-grid {
-  background-color: lightgray;
   display: block;
   overflow: hidden;
   padding: 0;
@@ -25,7 +24,6 @@
 .demo-basic {
   text-align: center;
   .demo-block div {
-    background-color: gray;
     color: white;
     height: 150px;
     line-height: 150px;
@@ -48,7 +46,7 @@
 
     .card-image {
       overflow: hidden;
-      padding: 1% 0%;
+      padding: 1% 6%;
     }
 
     > .row {
