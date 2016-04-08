@@ -1,14 +1,10 @@
-$background-url: url("../../assets/images/fundo_cabecalho.png");
-$wood-background-url: url("../../assets/images/madeira rodape.png");
 
 footer {
-  background-image: $background-url;
   padding: 1% 0;
   color: white;
   word-wrap: break-word;
 
   .wood-layer {
-    background-image: $wood-background-url;
     max-width: 200%;
     padding: 0 4%;
     overflow: hidden;

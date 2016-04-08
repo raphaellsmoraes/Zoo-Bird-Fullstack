@@ -1,8 +1,12 @@
 'use strict';
 (function () {
     var DiffController = (function () {
-        function DiffController() {
-            this.message = 'Hello';
+        function DiffController(Manifest, $scope) {
+            Manifest.getManifest(function (response) {
+                $scope.manifest = response.data;
+                document.getElementById('background-section').style.backgroundImage = 'url(\'/assets/images/'
+                    + $scope.manifest['fundo_default_section.png'] + ' \')';
+            });
         }
         return DiffController;
     }());

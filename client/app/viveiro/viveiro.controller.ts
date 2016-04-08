@@ -3,7 +3,13 @@
 (function () {
 
   class ViveiroController {
-    constructor($scope) {
+    constructor($scope, Manifest) {
+      Manifest.getManifest(function (response) {
+        $scope.manifest = response.data;
+        document.getElementById('background-section').style.backgroundImage = 'url(\'/assets/images/'
+          + $scope.manifest['fundo_default_section.png'] + ' \')';
+      });
+
       $scope.rows = [];
       this.rowsIndex = 0;
 

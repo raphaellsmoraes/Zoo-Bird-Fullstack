@@ -1,7 +1,7 @@
 'use strict';
 var NavbarController = (function () {
     //end-non-standard
-    function NavbarController($location, Auth) {
+    function NavbarController($location, Auth, Manifest, $scope) {
         //start-non-standard
         this.menu = [{
                 'title': 'HOME',
@@ -28,6 +28,11 @@ var NavbarController = (function () {
         this.isLoggedIn = Auth.isLoggedIn;
         this.isAdmin = Auth.isAdmin;
         this.getCurrentUser = Auth.getCurrentUser;
+        Manifest.getManifest(function (response) {
+            $scope.manifest = response.data;
+            document.getElementById('navbar').style.backgroundImage = 'url(\'/assets/images/'
+                + $scope.manifest['fundo_cabecalho.png'] + ' \')';
+        });
     }
     NavbarController.prototype.isActive = function (route) {
         return route === this.$location.path();

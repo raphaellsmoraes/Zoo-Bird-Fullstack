@@ -1,18 +1,16 @@
 'use strict';
 (function () {
-    var ContactController = (function () {
-        function ContactController($scope, Manifest) {
+    var AboutUsController = (function () {
+        function AboutUsController(Manifest, $scope) {
             Manifest.getManifest(function (response) {
                 $scope.manifest = response.data;
                 document.getElementById('background-section').style.backgroundImage = 'url(\'/assets/images/'
                     + $scope.manifest['fundo_default_section.png'] + ' \')';
             });
-            this.mapHeight = 450;
-            this.mapWidth = 600;
         }
-        return ContactController;
+        return AboutUsController;
     }());
-    angular.module('zoobirdApp.contact')
-        .controller('ContactController', ContactController);
+    angular.module('zoobirdApp.aboutus')
+        .controller('AboutUsController', AboutUsController);
 })();
-//# sourceMappingURL=contact.controller.js.map
+//# sourceMappingURL=aboutus.controller.js.map

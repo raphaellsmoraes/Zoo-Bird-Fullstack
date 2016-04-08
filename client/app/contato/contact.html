@@ -1,10 +1,11 @@
 <header class="hero-unit" id="banner">
-  <img class="img-responsive center-block" src="../../assets/images/section_header_aboutus.png">
+  <img class="img-responsive center-block" ng-src="/assets/images/{{manifest['section_header_aboutus.png']}}">
 </header>
 
-<div class="background-section">
+<div id="background-section" class="background-section">
   <div class="row" style="margin:0">
-    <img class="img-responsive center-block" style="position: absolute" src="../../assets/images/background_leafs.png">
+    <img class="img-responsive center-block" style="position: absolute"
+         ng-src="/assets/images/{{manifest['background_leafs.png']}}">
 
     <div class="foreground-section" style="padding-bottom: 5%; margin-top: 0">
       <!-- Contact Info -->
@@ -15,12 +16,12 @@
         <h4>mauriciozoobird@outlook.com</h4>
         <h4>+55 (19) 9 9601 3456
           <img style="width: 25px; display: initial; padding: 3px; margin-left: 1%"
-               src="../../assets/images/logooi.png"
+               ng-src="/assets/images/{{manifest['logooi.png']}}"
                class="img-responsive"/>
         </h4>
         <h4>+55 (19) 9 8733 2750
           <img style="width: 25px; display: initial; padding: 3px; margin-left: 1%"
-               src="../../assets/images/logovivo.png"
+               ng-src="/assets/images/{{manifest['logovivo.png']}}"
                class="img-responsive"/>
         </h4>
         <p class="text-center" style="margin-top: 15%">Rod. Edenor João Tasca, nº 4377 <br> Caixa D'Água - Vinhedo -

@@ -1,11 +1,8 @@
 $size: 30px;
 $border-size: 3px;
 $color: #FFFFFF;
-$background-url: url("../../assets/images/fundo_cabecalho.png");
 $transparent-background: transparent;
 #navigation, .navbar .navbar-default, .navbar-static-top {
-  background-image: $background-url;
-
   .navbar-nav {
     width: 100%;
     text-align: center;

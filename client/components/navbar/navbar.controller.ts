@@ -26,11 +26,17 @@ class NavbarController {
   isCollapsed = true;
   //end-non-standard
 
-  constructor($location, Auth) {
+  constructor($location, Auth, Manifest, $scope) {
     this.$location = $location;
     this.isLoggedIn = Auth.isLoggedIn;
     this.isAdmin = Auth.isAdmin;
     this.getCurrentUser = Auth.getCurrentUser;
+
+    Manifest.getManifest(function (response) {
+      $scope.manifest = response.data;
+      document.getElementById('navbar').style.backgroundImage = 'url(\'/assets/images/'
+        + $scope.manifest['fundo_cabecalho.png'] + ' \')';
+    });
   }
 
   isActive(route) {

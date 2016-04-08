@@ -1,11 +1,12 @@
 <header class="hero-unit" id="banner">
-  <img class="img-responsive center-block" src="../../assets/images/section_header_aboutus.png">
+  <img class="img-responsive center-block" ng-src="/assets/images/{{manifest['section_header_aboutus.png']}}">
 </header>
 
-<div class="background-section">
+<div id="background-section" class="background-section">
   <div class="row" style="margin:0">
 
-    <img class="img-responsive center-block" style="position: absolute" src="../../assets/images/background_leafs.png">
+    <img class="img-responsive center-block" style="position: absolute"
+         ng-src="/assets/images/{{manifest['background_leafs.png']}}">
 
 
     <div infinite-scroll='loadMore()' infinite-scroll-distance='1'

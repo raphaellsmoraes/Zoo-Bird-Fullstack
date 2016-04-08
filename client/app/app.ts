@@ -16,15 +16,6 @@ angular.module('zoobirdApp', [
     'ui.bootstrap',
     'validation.match'
   ])
-  .service('RevManifest', function ($http) {
-    this.getManifest = function () {
-      return $http.get('/assets/rev-manifest-test.json').then(function (response) {
-        return response.data;
-      });
-    };
-
-    this.imgPath = '/assets/images/';
-  })
   .config(function ($routeProvider, $locationProvider) {
     $routeProvider
       .otherwise({

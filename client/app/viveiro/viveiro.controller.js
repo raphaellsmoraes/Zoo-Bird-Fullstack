@@ -1,7 +1,12 @@
 'use strict';
 (function () {
     var ViveiroController = (function () {
-        function ViveiroController($scope) {
+        function ViveiroController($scope, Manifest) {
+            Manifest.getManifest(function (response) {
+                $scope.manifest = response.data;
+                document.getElementById('background-section').style.backgroundImage = 'url(\'/assets/images/'
+                    + $scope.manifest['fundo_default_section.png'] + ' \')';
+            });
             $scope.rows = [];
             this.rowsIndex = 0;
             for (var i = 0; i < 13; i++) {
