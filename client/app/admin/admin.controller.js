@@ -1,14 +1,20 @@
 'use strict';
 (function () {
     var AdminController = (function () {
-        function AdminController(User) {
-            // Use the User $resource to fetch all users
-            this.users = User.query();
+        function AdminController($scope, Pages, $http, Upload) {
+            $scope.model = {
+                name: 'Tabs'
+            };
+            Pages.getPages(function (response) {
+                $scope.model.pages = response.data[0];
+            });
+            $scope.update = function () {
+                $http.put('/api/pages/' + $scope.model.pages._id, $scope.model.pages)
+                    .then(function (response) {
+                    console.log(response);
+                });
+            };
         }
-        AdminController.prototype.delete = function (user) {
-            user.$remove();
-            this.users.splice(this.users.indexOf(user), 1);
-        };
         return AdminController;
     }());
     angular.module('zoobirdApp.admin')

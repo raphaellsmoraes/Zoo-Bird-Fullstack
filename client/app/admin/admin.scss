@@ -1,20 +1,48 @@
-.trash { color:rgb(209, 91, 71); }
+.trash {
+  color: rgb(209, 91, 71);
+}
 
 .user-list {
-	li {
-		display: flex;
-		border: none;
-		border-bottom: 1px lightgray solid;
-		margin-bottom: 0;
-		&:last-child { border-bottom: none; }
+  li {
+    display: flex;
+    border: none;
+    border-bottom: 1px lightgray solid;
+    margin-bottom: 0;
+    &:last-child {
+      border-bottom: none;
+    }
 
-		.user-info {
-			flex-grow: 1;
-		}
-		.trash {
-			display: flex;
-			align-items: center;
-			text-decoration: none;
-		}
-	}
+    .user-info {
+      flex-grow: 1;
+    }
+    .trash {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+  }
+}
+
+.thumb {
+  width: 24px;
+  height: 24px;
+  float: none;
+  position: relative;
+  top: 7px;
+}
+
+form .progress {
+  line-height: 15px;
+}
+
+.progress {
+  display: inline-block;
+  width: 100px;
+  border: 3px groove #CCC;
+}
+
+.progress div {
+  font-size: smaller;
+  background: orange;
+  width: 0;
 }

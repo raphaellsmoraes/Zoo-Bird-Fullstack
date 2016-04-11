@@ -29,6 +29,7 @@
         "client/app/main/main.controller.ts",
         "client/app/main/main.ts",
         "client/app/manifest/manifest.service.ts",
+        "client/app/pages/pages.service.ts",
         "client/app/viveiro/viveiro.controller.ts",
         "client/app/viveiro/viveiro.module.ts",
         "client/app/viveiro/viveiro.router.ts",

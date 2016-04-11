@@ -11,6 +11,7 @@ angular.module('zoobirdApp', [
     'ngResource',
     'ngSanitize',
     'ngRoute',
+    'ngFileUpload',
     'btford.socket-io',
     'ui.bootstrap',
     'validation.match'

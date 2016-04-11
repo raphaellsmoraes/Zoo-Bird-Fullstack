@@ -4,10 +4,10 @@
 
   class MainController {
 
-    constructor($scope, Manifest) {
+    constructor($scope, Manifest, Pages) {
       $scope.slides = [];
       $scope.manifest = {};
-
+      $scope.model = {};
       Manifest.getManifest(function (response) {
         $scope.manifest = response.data;
         $scope.slides.push({
@@ -17,6 +17,10 @@
         });
         document.getElementById('background-section').style.backgroundImage = 'url(\'/assets/images/'
           + $scope.manifest['fundo_default_section.png'] + ' \')';
+      });
+      Pages.getPages(function (response) {
+        console.log(response.data[0]);
+        $scope.model.pages = response.data[0];
       });
     }
   }

@@ -1,12 +1,125 @@
 <div class="container">
-  <p>The delete user and user index api routes are restricted to users with the 'admin' role.</p>
-  <ul class="list-group user-list">
-    <li class="list-group-item" ng-repeat="user in admin.users">
-	    <div class="user-info">
-	        <strong>{{user.name}}</strong><br>
-	        <span class="text-muted">{{user.email}}</span>
-	    </div>
-        <a ng-click="admin.delete(user)" class="trash"><span class="fa fa-trash fa-2x"></span></a>
-    </li>
-  </ul>
+  <p>Configurações das paginas do Zoo Bird.</p>
+
+  <form name="outerForm" class="tab-form-demo">
+    <uib-tabset active="activeForm">
+      <uib-tab index="0" heading="Home">
+        <ng-form name="nestedForm">
+          <div class="form-group">
+            <div class="row">
+              <label>Imagem esquerda</label>
+              <input type="file" id="home-img-left">
+            </div>
+            <div class="row">
+              <label>Texto esquerda</label>
+              <textarea class="form-control" ng-model="model.pages.home.left.text"></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <label>Imagem Centro</label>
+              <input type="file" id="home-img-center ">
+            </div>
+            <div class="row">
+              <label>Texto Centro</label>
+              <textarea class="form-control" required ng-model="model.pages.home.center.text"></textarea>
+            </div>
+          </div>
+          <div class="form-group  ">
+            <div class="row">
+              <label>Imagem Direita</label>
+              <input type="file" id="home-img-right">
+            </div>
+            <div class="row">
+              <label>Texto Direita</label>
+              <textarea class="form-control" required ng-model="model.pages.home.right.text"></textarea>
+            </div>
+          </div>
+        </ng-form>
+      </uib-tab>
+      <uib-tab index="1" heading="Quem Somos">
+        <ng-form name="nestedForm">
+          <div class="form-group">
+            <div class="row">
+              <label>Imagem esquerda</label>
+              <div class="button" ngf-select ng-model="model.pages.aboutus.left.photo"
+                   name="model.pages.aboutus.left.photo"
+                   ngf-pattern="'image/*'"
+                   ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"
+                   ngf-resize="{width: 100, height: 100, quality: .8}">Select
+              </div>
+              Image thumbnail: <img ngf-thumbnail="model.pages.aboutus.left.photo || '/thumb.jpg'">
+            </div>
+            <br><br>
+            <div class="row">
+              <label>Texto esquerda</label>
+              <textarea class="form-control" ng-model="model.pages.aboutus.left.text"></textarea>
+            </div>
+          </div>
+          <div class="form-group" style="visibility: hidden;">
+            <div class="row">
+              <label>Imagem Centro</label>
+              <input type="file" id="aboutus-img-center ">
+            </div>
+            <div class="row">
+              <label>Texto Centro</label>
+              <textarea class="form-control" required ng-model="model.pages.aboutus.center.text"></textarea>
+            </div>
+          </div>
+          <div class="form-group" style="visibility: hidden;">
+            <div class="row">
+              <label>Imagem Direita</label>
+              <input type="file" id="aboutus-img-right">
+            </div>
+            <div class="row">
+              <label>Texto Direita</label>
+              <textarea class="form-control" required ng-model="model.pages.aboutus.right.text"></textarea>
+            </div>
+          </div>
+        </ng-form>
+      </uib-tab>
+      <uib-tab index="2" heading="Viveiro">
+        More Tab Content
+      </uib-tab>
+      <uib-tab index="2" heading="Diferencial">
+        <ng-form name="nestedForm">
+          <div class="form-group">
+            <div class="row">
+              <label>Imagem esquerda</label>
+              <input type="file" id="diff-img-left">
+            </div>
+            <div class="row">
+              <label>Texto esquerda</label>
+              <textarea class="form-control" ng-model="model.pages.diferencial.left.text"></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <label>Imagem Centro</label>
+              <input type="file" id="diff-img-center ">
+            </div>
+            <div class="row">
+              <label>Texto Centro</label>
+              <textarea class="form-control" required ng-model="model.pages.diferencial.center.text"></textarea>
+            </div>
+          </div>
+          <div class="form-group  ">
+            <div class="row">
+              <label>Imagem Direita</label>
+              <input type="file" id="diff-img-right">
+            </div>
+            <div class="row">
+              <label>Texto Direita</label>
+              <textarea class="form-control" required ng-model="model.pages.diferencial.right.text"></textarea>
+            </div>
+          </div>
+        </ng-form>
+      </uib-tab>
+      <uib-tab index="2" heading="Contato">
+        More Tab Content
+      </uib-tab>
+    </uib-tabset>
+  </form>
+
+  <input type="submit" ng-click="update()">
 </div>
