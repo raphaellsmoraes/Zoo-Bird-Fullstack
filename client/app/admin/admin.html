@@ -8,8 +8,10 @@
           <div class="form-group">
             <div class="row">
               <label>Imagem esquerda</label>
-              <input type="file" id="home-img-left">
+              <input type="file" ngf-select ngf-change="onFileSelect($files, 'home', 'left')">
+              Image thumbnail: <img ng-src="{{model.pages.home.left.photo}}" style="height: 75px; width: 75px;">
             </div>
+            <br><br>
             <div class="row">
               <label>Texto esquerda</label>
               <textarea class="form-control" ng-model="model.pages.home.left.text"></textarea>
@@ -18,17 +20,19 @@
           <div class="form-group">
             <div class="row">
               <label>Imagem Centro</label>
-              <input type="file" id="home-img-center ">
+              <input type="file" ngf-select ngf-change="onFileSelect($files, 'home', 'center')">
+              Image thumbnail: <img ng-src="{{model.pages.home.center.photo}}" style="height: 75px; width: 75px;">
             </div>
             <div class="row">
               <label>Texto Centro</label>
               <textarea class="form-control" required ng-model="model.pages.home.center.text"></textarea>
             </div>
           </div>
-          <div class="form-group  ">
+          <div class="form-group">
             <div class="row">
               <label>Imagem Direita</label>
-              <input type="file" id="home-img-right">
+              <input type="file" ngf-select ngf-change="onFileSelect($files, 'home', 'right')">
+              Image thumbnail: <img ng-src="{{model.pages.home.right.photo}}" style="height: 75px; width: 75px;">
             </div>
             <div class="row">
               <label>Texto Direita</label>
@@ -42,13 +46,8 @@
           <div class="form-group">
             <div class="row">
               <label>Imagem esquerda</label>
-              <div class="button" ngf-select ng-model="model.pages.aboutus.left.photo"
-                   name="model.pages.aboutus.left.photo"
-                   ngf-pattern="'image/*'"
-                   ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"
-                   ngf-resize="{width: 100, height: 100, quality: .8}">Select
-              </div>
-              Image thumbnail: <img ngf-thumbnail="model.pages.aboutus.left.photo || '/thumb.jpg'">
+              <input type="file" ngf-select ngf-change="onFileSelect($files, 'aboutus', 'left')">
+              Image thumbnail: <img ng-src="{{model.pages.aboutus.left.photo}}" style="height: 75px; width: 75px;">
             </div>
             <br><br>
             <div class="row">
@@ -56,20 +55,22 @@
               <textarea class="form-control" ng-model="model.pages.aboutus.left.text"></textarea>
             </div>
           </div>
-          <div class="form-group" style="visibility: hidden;">
+          <div class="form-group">
             <div class="row">
               <label>Imagem Centro</label>
-              <input type="file" id="aboutus-img-center ">
+              <input type="file" ngf-select ngf-change="onFileSelect($files, 'aboutus', 'center')">
+              Image thumbnail: <img ng-src="{{model.pages.aboutus.center.photo}}" style="height: 75px; width: 75px;">
             </div>
             <div class="row">
               <label>Texto Centro</label>
               <textarea class="form-control" required ng-model="model.pages.aboutus.center.text"></textarea>
             </div>
           </div>
-          <div class="form-group" style="visibility: hidden;">
+          <div class="form-group">
             <div class="row">
               <label>Imagem Direita</label>
-              <input type="file" id="aboutus-img-right">
+              <input type="file" ngf-select ngf-change="onFileSelect($files, 'aboutus', 'right')">
+              Image thumbnail: <img ng-src="{{model.pages.aboutus.right.photo}}" style="height: 75px; width: 75px;">
             </div>
             <div class="row">
               <label>Texto Direita</label>
@@ -86,8 +87,10 @@
           <div class="form-group">
             <div class="row">
               <label>Imagem esquerda</label>
-              <input type="file" id="diff-img-left">
+              <input type="file" ngf-select ngf-change="onFileSelect($files, 'diferencial', 'left')">
+              Image thumbnail: <img ng-src="{{model.pages.diferencial.left.photo}}" style="height: 75px; width: 75px;">
             </div>
+            <br><br>
             <div class="row">
               <label>Texto esquerda</label>
               <textarea class="form-control" ng-model="model.pages.diferencial.left.text"></textarea>
@@ -96,17 +99,20 @@
           <div class="form-group">
             <div class="row">
               <label>Imagem Centro</label>
-              <input type="file" id="diff-img-center ">
+              <input type="file" ngf-select ngf-change="onFileSelect($files, 'diferencial', 'center')">
+              Image thumbnail: <img ng-src="{{model.pages.diferencial.center.photo}}"
+                                    style="height: 75px; width: 75px;">
             </div>
             <div class="row">
               <label>Texto Centro</label>
               <textarea class="form-control" required ng-model="model.pages.diferencial.center.text"></textarea>
             </div>
           </div>
-          <div class="form-group  ">
+          <div class="form-group">
             <div class="row">
               <label>Imagem Direita</label>
-              <input type="file" id="diff-img-right">
+              <input type="file" ngf-select ngf-change="onFileSelect($files, 'diferencial', 'right')">
+              Image thumbnail: <img ng-src="{{model.pages.diferencial.right.photo}}" style="height: 75px; width: 75px;">
             </div>
             <div class="row">
               <label>Texto Direita</label>

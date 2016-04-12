@@ -19,7 +19,6 @@
           + $scope.manifest['fundo_default_section.png'] + ' \')';
       });
       Pages.getPages(function (response) {
-        console.log(response.data[0]);
         $scope.model.pages = response.data[0];
       });
     }
