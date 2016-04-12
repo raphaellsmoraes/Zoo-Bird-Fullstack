@@ -6,43 +6,43 @@ var PagesSchema = new mongoose.Schema({
   home: {
     left: {
       text: String,
-      photo: Buffer
+      photo: String
     },
     center: {
       text: String,
-      photo: Buffer
+      photo: String
     },
     right: {
       text: String,
-      photo: Buffer
+      photo: String
     }
   },
   aboutus: {
     left: {
       text: String,
-      photo: Buffer
+      photo: String
     },
     center: {
       text: String,
-      photo: Buffer
+      photo: String
     },
     right: {
       text: String,
-      photo: Buffer
+      photo: String
     }
   },
   diferencial: {
     left: {
       text: String,
-      photo: Buffer
+      photo: String
     },
     center: {
       text: String,
-      photo: Buffer
+      photo: String
     },
     right: {
       text: String,
-      photo: Buffer
+      photo: String
     }
   },
   active: Boolean

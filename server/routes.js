@@ -10,6 +10,7 @@ import path from 'path';
 export default function (app) {
   // Insert routes below
   app.use('/api/pages', require('./api/pages'));
+  app.use('/api/signing', require('./api/signing'));
   app.use('/api/users', require('./api/user'));
   app.use('/auth', require('./auth').default);
 
