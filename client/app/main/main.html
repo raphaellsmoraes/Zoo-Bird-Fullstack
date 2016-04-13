@@ -1,10 +1,7 @@
 <header class="hero-unit" id="banner">
   <uib-carousel active="active" interval="5000" no-wrap="noWrapSlides">
-    <uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
-      <img ng-src="{{slide.image}}" style="margin:0 auto;">
-      <div class="carousel-caption">
-        <p>{{slide.text}}</p>
-      </div>
+    <uib-slide ng-repeat="slide in model.pages.home.slider">
+      <img ng-src="{{slide}}" style="margin:0 auto; max-height: 300px;" class="img-responsive center-block">
     </uib-slide>
   </uib-carousel>
 </header>

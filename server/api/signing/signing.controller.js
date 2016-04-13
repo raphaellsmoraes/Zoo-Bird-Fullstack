@@ -6,8 +6,8 @@
 'use strict';
 
 var aws = {
-  "accessKeyId": "AKIAJZCNSJPO5OANGWQA",
-  "secretAccessKey": "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",
+  "accessKeyId": "",
+  "secretAccessKey": "",
   "region": "us-east-1",
   "bucket": "rm-zoobird"
 };

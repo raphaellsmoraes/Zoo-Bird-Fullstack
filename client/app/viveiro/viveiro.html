@@ -11,53 +11,48 @@
 
     <div infinite-scroll='loadMore()' infinite-scroll-distance='1'
          class="demo-basic block-grid four-up foreground-section" style="margin-top: 1%">
-      <div class="row col-md-12 col-lg-12 center-block" ng-repeat="row in rows">
-        <div class="bird-card-component-box col-md-3 col-lg-3" ng-repeat="component in row">
+      <div class="row">
+        <div class="bird-card-component-box col-md-3 col-lg-3" ng-repeat="bird in model.pages.viveiro.birds">
+          <div class="clearfix" ng-if="$index % 4 === 0 && $index !== 0"></div>
           <div class="bird-card-component-inner-box card-1">
             <!-- Bird name -->
             <div class="row">
-              <h4>NOME DO PÁSSARO</h4>
+              <h4>{{bird.name}}</h4>
             </div>
             <!-- Bird image -->
             <div class="row card-image">
-              <img class="center-block img-responsive" ng-src='http://placehold.it/250x275&text={{component.id}}'>
+              <img class="center-block img-responsive" ng-src='http://placehold.it/250x275&text=No image'
+                   ng-if="bird.photos.length < 1">
+              <img class="center-block img-responsive" ng-src="{{bird.photos[0]}}" ng-if="bird.photos.length > 0"/>
             </div>
             <!-- Bird description -->
             <div class="row">
               <h5 class="col-md-12 col-lg-12 text-center">INFORMAÇÕES</h5>
-              <p class="col-md-12 col-lg-12 text-justify">Lorem
-                ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore
-                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                mollit
-                anim id est laborum.</p>
+              <p class="col-md-12 col-lg-12 text-justify">{{bird.description}}</p>
             </div>
             <!-- Bird weight -->
             <div class="row">
               <div class="col-md-12 col-lg-12"
                    style="border-bottom: 2px lightgray solid; border-top: 2px lightgray solid;">
                 <h6 class="text-left col-md-6 col-lg-6" style="font-weight: bold">PESO:</h6>
-                <h6 class="text-right col-mg-6 col-lg-6">10kg</h6>
+                <h6 class="text-right col-mg-6 col-lg-6">{{bird.weight}}kg</h6>
               </div>
               <!-- Bird life estimative -->
               <div class="col-md-12 col-lg-12" style="border-bottom: 2px lightgray solid;">
                 <h6 class="text-left col-md-6 col-lg-6" style="font-weight: bold">ESTIMATIVA DE VIDA:</h6>
-                <h6 class="text-right col-mg-6 col-lg-6">10 anos</h6>
+                <h6 class="text-right col-mg-6 col-lg-6">{{bird.life}} anos</h6>
               </div>
               <!-- Bird origin -->
               <div class="col-md-12 col-lg-12" style="border-bottom: 2px lightgray solid;">
                 <h6 class="text-left col-md-6 col-lg-6" style="font-weight: bold">ORIGEM:</h6>
             <span class="col-mg-6 col-lg-6 text-right">
-              <flag country="br" size="32"></flag>
+              <flag country="{{bird.origin}}" size="32"></flag>
             </span>
               </div>
               <!-- Bird value -->
               <div class="col-md-12 col-lg-12">
                 <h4 class="text-left col-md-6 col-lg-6" style="font-weight: bold">VALOR:</h4>
-                <h4 class="text-right col-mg-6 col-lg-6"><span style="font-weight: bold">R$</span> 30.800,00</h4>
+                <h4 class="text-right col-mg-6 col-lg-6"><span style="font-weight: bold">R$</span> {{bird.price}}</h4>
               </div>
             </div>
           </div>

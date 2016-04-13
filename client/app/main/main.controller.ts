@@ -5,16 +5,10 @@
   class MainController {
 
     constructor($scope, Manifest, Pages) {
-      $scope.slides = [];
       $scope.manifest = {};
       $scope.model = {};
       Manifest.getManifest(function (response) {
         $scope.manifest = response.data;
-        $scope.slides.push({
-          image: '/assets/images/' + $scope.manifest['home_slider.png'],
-          text: ['Nice image', 'Awesome photograph', 'That is so cool', 'I love that'][$scope.slides.length % 4],
-          id: 0
-        });
         document.getElementById('background-section').style.backgroundImage = 'url(\'/assets/images/'
           + $scope.manifest['fundo_default_section.png'] + ' \')';
       });

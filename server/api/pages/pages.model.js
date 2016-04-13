@@ -15,7 +15,8 @@ var PagesSchema = new mongoose.Schema({
     right: {
       text: String,
       photo: String
-    }
+    },
+    slider: [String]
   },
   aboutus: {
     left: {
@@ -28,6 +29,9 @@ var PagesSchema = new mongoose.Schema({
     },
     right: {
       text: String,
+      photo: String
+    },
+    top: {
       photo: String
     }
   },
@@ -43,7 +47,21 @@ var PagesSchema = new mongoose.Schema({
     right: {
       text: String,
       photo: String
+    },
+    top: {
+      photo: String
     }
+  },
+  contato: {
+    top: {
+      photo: String
+    }
+  },
+  viveiro: {
+    top: {
+      photo: String
+    },
+    birds: []
   },
   active: Boolean
 });
