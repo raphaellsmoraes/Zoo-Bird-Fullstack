@@ -6,6 +6,28 @@
       <uib-tab index="0" heading="Home">
         <ng-form name="nestedForm">
           <div class="form-group">
+            <label>Slider</label>
+            <div class="row">
+              <div>
+                <input type="file" ngf-select ngf-change="onFileSelect($files, 'home', 'slider')">
+              </div>
+              <div>
+                <input type="file" ngf-select ngf-change="onFileSelect($files, 'home', 'slider')">
+              </div>
+              <div>
+                <input type="file" ngf-select ngf-change="onFileSelect($files, 'home', 'slider')">
+              </div>
+              <div>
+                <input type="file" ngf-select ngf-change="onFileSelect($files, 'home', 'slider')">
+              </div>
+              <div class="row">
+                <div class="col-md-3" ng-repeat="thumb in model.pages.home.slider">
+                  {{thumb}}
+                  <img ng-src="{{thumb}}" style="height: 75px; width: 100px;">
+                </div>
+              </div>
+            </div>
+            <br><br>
             <div class="row">
               <label>Imagem esquerda</label>
               <input type="file" ngf-select ngf-change="onFileSelect($files, 'home', 'left')">
@@ -45,6 +67,11 @@
         <ng-form name="nestedForm">
           <div class="form-group">
             <div class="row">
+              <label>Imagem topo</label>
+              <input type="file" ngf-select ngf-change="onFileSelect($files, 'aboutus', 'slider')">
+              Image thumbnail: <img ng-src="{{model.pages.aboutus.top.photo}}" style="height: 75px; width: 75px;">
+            </div>
+            <div class="row">
               <label>Imagem esquerda</label>
               <input type="file" ngf-select ngf-change="onFileSelect($files, 'aboutus', 'left')">
               Image thumbnail: <img ng-src="{{model.pages.aboutus.left.photo}}" style="height: 75px; width: 75px;">
@@ -80,11 +107,84 @@
         </ng-form>
       </uib-tab>
       <uib-tab index="2" heading="Viveiro">
-        More Tab Content
+        <div class="container">
+          <a class="new text-right col-md-12" ng-click="open('lg')"><span class="fa fa-plus-circle fa-2x"></span></a>
+
+          <script type="text/ng-template" id="myNewModalContent.html">
+            <div class="modal-header">
+              <h3 class="modal-title">Adicionar novo pássaro</h3>
+            </div>
+            <div class="modal-body">
+              <form role="form">
+                <div class="form-group">
+                  <label>Nome:</label>
+                  <input type="text" class="form-control" ng-model="nbird.name">
+                </div>
+                <div class="form-group">
+                  <label>Descrição:</label>
+                  <textarea ng-model="nbird.description" class="form-control"></textarea>
+                </div>
+                <div class="form-group">
+                  <label>Peso: </label>
+                  <input type="text" ng-model="nbird.weight" class="form-control"/>
+                </div>
+                <div class="form-group">
+                  <label>Exp. Vida: </label>
+                  <input type="text" ng-model="nbird.life" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Origem:</label>
+                  <select ng-options="item.code as item.name for item in countryList"
+                          ng-model="nbird.origin" class="form-control"></select>
+                  <flag country="{{nbird.origin}}" size="32" class="form-control"></flag>
+                </div>
+                <div class="form-group">
+                  <label>Preço:</label>
+                  <input type="text" ng-model="nbird.price" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Pic 1:</label>
+                  <input type="file" ngf-select ngf-change="onFileSelect($files, 'modal', '1')" class="form-control">
+                  <label>Pic 2:</label>
+                  <input type="file" ngf-select ngf-change="onFileSelect($files, 'modal', '2')" class="form-control">
+                  <label>Pic 3:</label>
+                  <input type="file" ngf-select ngf-change="onFileSelect($files, 'modal', '3')" class="form-control">
+                  <label>Pic 4:</label>
+                  <input type="file" ngf-select ngf-change="onFileSelect($files, 'modal', '4')" class="form-control">
+                  <label>Pic 5:</label>
+                  <input type="file" ngf-select ngf-change="onFileSelect($files, 'modal', '5')" class="form-control">
+                </div>
+                <div class="form-group">
+                  Image thumbnail:
+                  <img ng-repeat="image in nbird.photos" ng-src="{{image}}" style="height: 75px; width: 75px;">
+                </div>
+              </form>
+              Selected: <code>{{ nbird }}</code>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-primary" type="button" ng-click="ok()">Salvar</button>
+              <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+            </div>
+          </script>
+          <ul class="list-group user-list">
+            <li class="list-group-item" ng-repeat="bird in model.pages.viveiro.birds">
+              <div class="user-info center-block text-center" style="border: black 1px solid; cursor: pointer"
+                   ng-click="open('lg', bird)">
+                <strong>{{bird.name}}</strong><br>
+                <span class="text-muted">{{bird.price}}</span>
+              </div>
+            </li>
+          </ul>
+        </div>
       </uib-tab>
-      <uib-tab index="2" heading="Diferencial">
+      <uib-tab index="3" heading="Diferencial">
         <ng-form name="nestedForm">
           <div class="form-group">
+            <div class="row">
+              <label>Imagem topo</label>
+              <input type="file" ngf-select ngf-change="onFileSelect($files, 'diferencial', 'slider')">
+              Image thumbnail: <img ng-src="{{model.pages.diferencial.top.photo}}" style="height: 75px; width: 75px;">
+            </div>
             <div class="row">
               <label>Imagem esquerda</label>
               <input type="file" ngf-select ngf-change="onFileSelect($files, 'diferencial', 'left')">
@@ -121,11 +221,18 @@
           </div>
         </ng-form>
       </uib-tab>
-      <uib-tab index="2" heading="Contato">
-        More Tab Content
+      <uib-tab index="4" heading="Contato">
+        <ng-form name="nestedForm">
+          <div class="form-group">
+            <div class="row">
+              <label>Imagem topo</label>
+              <input type="file" ngf-select ngf-change="onFileSelect($files, 'contato', 'slider')">
+              Image thumbnail: <img ng-src="{{model.pages.contato.top.photo}}" style="height: 75px; width: 75px;">
+            </div>
+          </div>
+        </ng-form>
       </uib-tab>
     </uib-tabset>
   </form>
-
   <input type="submit" ng-click="update()">
 </div>
