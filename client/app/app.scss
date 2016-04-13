@@ -2,7 +2,6 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/font
 @import '../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
 $fa-font-path: "../bower_components/font-awesome/fonts";
 @import '../bower_components/font-awesome/scss/font-awesome';
-@import 'http://cloud.github.com/downloads/lafeber/world-flags-sprite/flags32.css';
 
 /**
  * App-wide Styles
@@ -21,6 +20,7 @@ $fa-font-path: "../bower_components/font-awesome/fonts";
 @import 'admin/admin';
 @import 'contato/contact';
 @import 'diferencial/diferencial';
+@import 'flags';
 @import 'main/main';
 @import 'viveiro/viveiro';
 @import '../components/footer/footer';

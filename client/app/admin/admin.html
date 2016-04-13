@@ -107,6 +107,11 @@
         </ng-form>
       </uib-tab>
       <uib-tab index="2" heading="Viveiro">
+        <div class="row form-group">
+          <label>Imagem topo</label>
+          <input type="file" ngf-select ngf-change="onFileSelect($files, 'viveiro', 'top')" class="form-control">
+          Image thumbnail: <img ng-src="{{model.pages.viveiro.top.photo}}" style="height: 75px; width: 75px;">
+        </div>
         <div class="container">
           <a class="new text-right col-md-12" ng-click="open('lg')"><span class="fa fa-plus-circle fa-2x"></span></a>
 

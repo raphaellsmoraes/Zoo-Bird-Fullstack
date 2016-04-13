@@ -1,5 +1,5 @@
 <header class="hero-unit" id="banner">
-  <img class="img-responsive center-block" ng-src="/assets/images/{{manifest['section_header_aboutus.png']}}">
+  <img class="img-responsive center-block" ng-src="{{model.pages.viveiro.top.photo}}">
 </header>
 
 <div id="background-section" class="background-section">
@@ -23,7 +23,11 @@
             <div class="row card-image">
               <img class="center-block img-responsive" ng-src='http://placehold.it/250x275&text=No image'
                    ng-if="bird.photos.length < 1">
-              <img class="center-block img-responsive" ng-src="{{bird.photos[0]}}" ng-if="bird.photos.length > 0"/>
+              <uib-carousel active="active" interval="5000" no-wrap="noWrapSlides" ng-if="bird.photos.length > 0">
+                <uib-slide ng-repeat="slide in bird.photos">
+                  <img class="center-block img-responsive" ng-src="{{slide}}"/>
+                </uib-slide>
+              </uib-carousel>
             </div>
             <!-- Bird description -->
             <div class="row">

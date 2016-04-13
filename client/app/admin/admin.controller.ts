@@ -11,6 +11,7 @@
       Pages.getPages(function (response) {
         $scope.model.pages = response.data[0];
       });
+
       $scope.update = function () {
         $http.put('/api/pages/' + $scope.model.pages._id, $scope.model.pages)
           .then(function (response) {

@@ -12,7 +12,6 @@ var aws = {
   "bucket": "rm-zoobird"
 };
 var crypto = require('crypto');
-var moment = require('moment');
 
 var s3Url = 'https://' + aws.bucket + '.s3.amazonaws.com';
 
@@ -21,9 +20,7 @@ export function signing(req, res) {
   var fileName = request.filename;
   var path = 'zoo-bird/' + fileName;
   var readType = 'public-read';
-  var expiration = moment().add(5, 'm').toDate(); //15 minutes
   var s3Policy = {
-    'expiration': expiration,
     'conditions': [{
       'bucket': aws.bucket
     },
