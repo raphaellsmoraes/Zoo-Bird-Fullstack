@@ -53,10 +53,8 @@
                       $scope.model.pages.home.right.photo = xmlDoc.getElementsByTagName('Location')[0].childNodes[0].nodeValue;
                     } else if (position === 'slider') {
                       if ($scope.model.pages.home.slider.indexOf(
-                          xmlDoc.getElementsByTagName('Location')[0].childNodes[0].nodeValue) !== 0) {
-                        if ($scope.model.pages.home.slider.length === 0) {
-                          $scope.model.pages.home.slider = [];
-                        }
+                          String(xmlDoc.getElementsByTagName('Location')[0].childNodes[0].nodeValue)
+                        ) === -1) {
                         $scope.model.pages.home.slider.push(String(xmlDoc.getElementsByTagName('Location')[0].childNodes[0].nodeValue));
                       }
                     }
@@ -116,6 +114,10 @@
           var index = $scope.model.pages.viveiro.birds.indexOf(selectedItem);
           if (index !== -1) {
             $scope.model.pages.viveiro.birds[index] = selectedItem;
+          } else {
+            if ($scope.model.pages.viveiro.birds.indexOf(selectedItem) === -1) {
+              $scope.model.pages.viveiro.birds.push(selectedItem);
+            }
           }
         }, function () {
           $log.info('Modal dismissed at: ' + new Date());
@@ -125,11 +127,18 @@
       $scope.toggleAnimation = function () {
         $scope.animationsEnabled = !$scope.animationsEnabled;
       };
+
+      $scope.deleteSlider = function (img) {
+        $scope.model.pages.home.slider.splice(img, 1);
+      };
     }
   }
 
   class ModalInstanceCtrl {
     constructor($scope, $uibModalInstance, bird, Upload, $http) {
+      if (bird === undefined) {
+        bird = {};
+      }
       $scope.nbird = bird;
       $scope.countryList =
         [{name: 'Afghanistan', code: 'AF'}, {name: 'Åland Islands', code: 'AX'}, {

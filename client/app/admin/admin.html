@@ -20,10 +20,14 @@
               <div>
                 <input type="file" ngf-select ngf-change="onFileSelect($files, 'home', 'slider')">
               </div>
+              <div>
+                <input type="file" ngf-select ngf-change="onFileSelect($files, 'home', 'slider')">
+              </div>
               <div class="row">
                 <div class="col-md-3" ng-repeat="thumb in model.pages.home.slider">
                   {{thumb}}
                   <img ng-src="{{thumb}}" style="height: 75px; width: 100px;">
+                  <a ng-click="deleteSlider(thumb)">Delete</a>
                 </div>
               </div>
             </div>

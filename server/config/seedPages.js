@@ -10,9 +10,9 @@ Pages.find({}).then((result) => {
   if (result.length === 0) {
     Pages.create({
       home: {
-        left: {text: ""},
-        center: {text: ""},
-        right: {text: ""},
+        left: {text: "", photo: ""},
+        center: {text: "", photo: ""},
+        right: {text: "", photo: ""},
         slider: []
       },
       aboutus: {

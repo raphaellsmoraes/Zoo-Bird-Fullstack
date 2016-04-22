@@ -1,3 +1,7 @@
+$break-small: 768px;
+$break-medium: 992px;
+$break-large: 1200px;
+
 .block-grid {
   display: block;
   overflow: hidden;
@@ -40,13 +44,38 @@
     background: #fff;
     border-radius: 2px;
     display: block;
+    @media screen and (max-width: $break-small) {
+      height: 400px;
+    }
+    @media screen and (min-width: $break-medium) {
+      height: 450px;
+    }
+    @media screen and (min-width: $break-large) {
+      height: 500px;
+    }
     float: left;
-    margin: 1rem;
     position: relative;
 
     .card-image {
+      position: relative;
       overflow: hidden;
-      padding: 1% 6%;
+      width: 100%;
+      margin: 0;
+      @media screen and (max-width: $break-small) {
+        img {
+          height: 150px;
+        }
+      }
+      @media screen and (min-width: $break-medium) {
+        img {
+          height: 250px;
+        }
+      }
+      @media screen and (min-width: $break-large) {
+        img {
+          height: 300px;
+        }
+      }
     }
 
     > .row {

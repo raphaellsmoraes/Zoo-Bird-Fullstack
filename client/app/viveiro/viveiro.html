@@ -6,57 +6,74 @@
   <div class="row" style="margin:0">
 
     <img class="img-responsive center-block" style="position: absolute"
+
          ng-src="/assets/images/{{manifest['background_leafs.png']}}">
+    <div class="demo-basic block-grid four-up foreground-section"
+         style="margin-top: 1%; margin-left: 1%; margin-right: 1%">
 
-
-    <div infinite-scroll='loadMore()' infinite-scroll-distance='1'
-         class="demo-basic block-grid four-up foreground-section" style="margin-top: 1%">
+      <div class="row col-md-12 col-lg-12 col-sm-12 col-xs-12" style="margin-top: 3%">
+        <div class="col-sm-6 col-sm-offset-3">
+          <div id="imaginary_container">
+            <div class="input-group stylish-input-group">
+              <input type="text" class="form-control" placeholder="Pesquisa" ng-model="searchText">
+                    <span class="input-group-addon">
+                        <button type="submit">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="row">
-        <div class="bird-card-component-box col-md-3 col-lg-3" ng-repeat="bird in model.pages.viveiro.birds">
+        <div class="bird-card-component-box col-md-3 col-lg-3 col-xs-12 col-sm-12"
+             ng-repeat="bird in model.pages.viveiro.birds | filter:searchText">
           <div class="clearfix" ng-if="$index % 4 === 0 && $index !== 0"></div>
           <div class="bird-card-component-inner-box card-1">
             <!-- Bird name -->
             <div class="row">
-              <h4>{{bird.name}}</h4>
+              <h4 class="col-md-12 col-lg-12 col-sm-12 col-xs-12">{{bird.name}}</h4>
             </div>
             <!-- Bird image -->
             <div class="row card-image">
-              <img class="center-block img-responsive" ng-src='http://placehold.it/250x275&text=No image'
+              <img class="center-block" ng-src='http://placehold.it/250x275&text=No image'
                    ng-if="bird.photos.length < 1">
               <uib-carousel active="active" interval="5000" no-wrap="noWrapSlides" ng-if="bird.photos.length > 0">
                 <uib-slide ng-repeat="slide in bird.photos">
-                  <img class="center-block img-responsive" ng-src="{{slide}}"/>
+                  <img class="center-block" ng-src="{{slide}}"/>
                 </uib-slide>
               </uib-carousel>
             </div>
             <!-- Bird description -->
             <div class="row">
-              <h5 class="col-md-12 col-lg-12 text-center">INFORMAÇÕES</h5>
-              <p class="col-md-12 col-lg-12 text-justify">{{bird.description}}</p>
+              <h5 class="col-md-12 col-lg-12 col-xs-12 col-sm-12 text-center">INFORMAÇÕES</h5>
+              <p class="col-md-12 col-lg-12 col-xs-12 col-sm-12 text-justify">{{bird.description}}</p>
             </div>
             <!-- Bird weight -->
             <div class="row">
-              <div class="col-md-12 col-lg-12"
+              <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12"
                    style="border-bottom: 2px lightgray solid; border-top: 2px lightgray solid;">
-                <h6 class="text-left col-md-6 col-lg-6" style="font-weight: bold">PESO:</h6>
-                <h6 class="text-right col-mg-6 col-lg-6">{{bird.weight}}kg</h6>
+                <h6 class="text-left col-md-6 col-lg-6 col-xs-6 col-sm-6" style="font-weight: bold">PESO:</h6>
+                <h6 class="text-right col-mg-6 col-lg-6 col-xs-6 col-sm-6">{{bird.weight}}kg</h6>
               </div>
               <!-- Bird life estimative -->
-              <div class="col-md-12 col-lg-12" style="border-bottom: 2px lightgray solid;">
-                <h6 class="text-left col-md-6 col-lg-6" style="font-weight: bold">ESTIMATIVA DE VIDA:</h6>
-                <h6 class="text-right col-mg-6 col-lg-6">{{bird.life}} anos</h6>
+              <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12" style="border-bottom: 2px lightgray solid;">
+                <h6 class="text-left col-md-6 col-lg-6 col-xs-6 col-sm-6" style="font-weight: bold">ESTIMATIVA DE
+                  VIDA:</h6>
+                <h6 class="text-right col-mg-6 col-lg-6 col-xs-6 col-sm-6">{{bird.life}} anos</h6>
               </div>
               <!-- Bird origin -->
-              <div class="col-md-12 col-lg-12" style="border-bottom: 2px lightgray solid;">
-                <h6 class="text-left col-md-6 col-lg-6" style="font-weight: bold">ORIGEM:</h6>
-            <span class="col-mg-6 col-lg-6 text-right">
+              <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12" style="border-bottom: 2px lightgray solid;">
+                <h6 class="text-left col-md-6 col-lg-6 col-xs-6 col-sm-6" style="font-weight: bold">ORIGEM:</h6>
+            <span class="col-mg-6 col-lg-6 col-xs-6 col-sm-6 text-right">
               <flag country="{{bird.origin}}" size="32"></flag>
             </span>
               </div>
               <!-- Bird value -->
-              <div class="col-md-12 col-lg-12">
-                <h4 class="text-left col-md-6 col-lg-6" style="font-weight: bold">VALOR:</h4>
-                <h4 class="text-right col-mg-6 col-lg-6"><span style="font-weight: bold">R$</span> {{bird.price}}</h4>
+              <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+                <h4 class="text-left col-md-6 col-lg-6 col-xs-6 col-sm-6" style="font-weight: bold">VALOR:</h4>
+                <h4 class="text-right col-mg-6 col-lg-6 col-xs-6 col-sm-6"><span style="font-weight: bold">R$</span>
+                  {{bird.price}}</h4>
               </div>
             </div>
           </div>
