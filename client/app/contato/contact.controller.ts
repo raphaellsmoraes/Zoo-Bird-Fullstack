@@ -6,7 +6,7 @@
     private mapHeight;
     private mapWidth;
 
-    constructor($scope, Manifest, Pages, $http) {
+    constructor($scope, Manifest, Pages, $http, $location) {
       $scope.model = {};
       $scope.mail = {};
 
@@ -30,6 +30,7 @@
           '/' + encodeURIComponent(mail.msg))
           .then(function (response) {
             alert('Mensagem enviada com sucesso.');
+            $location.path('/');
           }, function (x) {
             alert('Não foi possível enviar sua mensagem.');
           });

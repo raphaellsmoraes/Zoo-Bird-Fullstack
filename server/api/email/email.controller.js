@@ -11,7 +11,7 @@ var Mailgun = require('mailgun-js');
 var api_key = 'key-XX';
 
 //Your domain, from the Mailgun Control Panel
-var domain = 'sandbox94f56ccb8e9e4f5293623bcbda5be70a.mailgun.org';
+var domain = 'mg.zoobird.com.br';
 
 //Your sending email address
 var from_who = 'no-reply@zoobird.com.br';

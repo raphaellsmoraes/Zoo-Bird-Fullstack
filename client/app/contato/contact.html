@@ -39,7 +39,7 @@
 
     <!-- Form section -->
     <div class="col-md-offset-3 col-lg-offset-3 col-md-6 col-lg-6" style="margin-top: -20%">
-      <form>
+      <form ng-submit="sendMail(mail)">
         <div class="form-group">
           <input type="text" class="form-control" id="contactName" placeholder="NOME:"
                  ng-model="mail.name">
@@ -65,8 +65,7 @@
                       placeholder="MENSAGEM"
                       ng-model="mail.msg"></textarea>
         </div>
-        <button type="submit" class="btn btn-default center-block" ng-click="sendMail(mail)"
-                style="margin-bottom: 2%">Enviar
+        <button type="submit" class="btn btn-default center-block" style="margin-bottom: 2%">Enviar
         </button>
       </form>
     </div>
