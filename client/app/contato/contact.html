@@ -14,14 +14,14 @@
         <h2>ENTRE EM CONTATO</h2>
         <h3>Fale conosco</h3>
         <h4>mauriciozoobird@outlook.com</h4>
-        <h4>+55 (19) 9 9601 3456
-          <img style="width: 25px; display: initial; padding: 3px; margin-left: 1%"
-               ng-src="/assets/images/{{manifest['logooi.png']}}"
-               class="img-responsive"/>
-        </h4>
         <h4>+55 (19) 9 8733 2750
           <img style="width: 25px; display: initial; padding: 3px; margin-left: 1%"
                ng-src="/assets/images/{{manifest['logovivo.png']}}"
+               class="img-responsive"/>
+        </h4>
+        <h4>+55 (19) 9 9601 3456
+          <img style="width: 25px; display: initial; padding: 3px; margin-left: 1%"
+               ng-src="/assets/images/{{manifest['logooi.png']}}"
                class="img-responsive"/>
         </h4>
         <p class="text-center" style="margin-top: 15%">Rod. Edenor João Tasca, nº 4377 <br> Caixa D'Água - Vinhedo -
@@ -42,30 +42,30 @@
       <form>
         <div class="form-group">
           <input type="text" class="form-control" id="contactName" placeholder="NOME:"
-                 ng-model="vm.user.name">
+                 ng-model="mail.name">
         </div>
         <div class="form-group">
           <input type="email" class="form-control" id="contactEmail" placeholder="EMAIL:"
-                 ng-model="vm.user.email">
+                 ng-model="mail.email">
         </div>
         <div class="form-group col-md-4 col-lg-4" style="padding: 0">
           <input type="tel" class="form-control" id="contactTel" placeholder="TEL:"
-                 ng-model="vm.user.tel">
+                 ng-model="mail.tel">
         </div>
         <div class="form-group col-md-4 col-lg-4" style="padding: 0">
           <input type="text" class="form-control" id="contactCity" placeholder="CIDADE:"
-                 ng-model="vm.user.city">
+                 ng-model="mail.city">
         </div>
         <div class="form-group col-md-4 col-lg-4" style="padding: 0">
           <input type="text" class="form-control" id="contactSubject" placeholder="ASSUNTO:"
-                 ng-model="vm.user.subject">
+                 ng-model="mail.subject">
         </div>
         <div class="form-group">
             <textarea class="form-control" id="contactMessage" ng-maxlength="4096" maxlength="4096"
                       placeholder="MENSAGEM"
-                      ng-model="vm.user.message"></textarea>
+                      ng-model="mail.msg"></textarea>
         </div>
-        <button type="submit" class="btn btn-default center-block" ng-click="vm.submit(vm.user)"
+        <button type="submit" class="btn btn-default center-block" ng-click="sendMail(mail)"
                 style="margin-bottom: 2%">Enviar
         </button>
       </form>

@@ -6,8 +6,9 @@
     private mapHeight;
     private mapWidth;
 
-    constructor($scope, Manifest, Pages) {
+    constructor($scope, Manifest, Pages, $http) {
       $scope.model = {};
+      $scope.mail = {};
 
       Manifest.getManifest(function (response) {
         $scope.manifest = response.data;
@@ -19,6 +20,20 @@
       });
       this.mapHeight = 450;
       this.mapWidth = 600;
+
+      $scope.sendMail = function (mail) {
+        $http.get('/api/email/' + encodeURIComponent(mail.name) +
+          '/' + encodeURIComponent(mail.email) +
+          '/' + encodeURIComponent(mail.tel) +
+          '/' + encodeURIComponent(mail.city) +
+          '/' + encodeURIComponent(mail.subject) +
+          '/' + encodeURIComponent(mail.msg))
+          .then(function (response) {
+            alert('Mensagem enviada com sucesso.');
+          }, function (x) {
+            alert('Não foi possível enviar sua mensagem.');
+          });
+      };
     }
   }
 
