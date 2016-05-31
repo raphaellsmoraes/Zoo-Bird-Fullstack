@@ -6,8 +6,8 @@
 'use strict';
 
 var aws = {
-  "accessKeyId": "",
-  "secretAccessKey": "",
+  "accessKeyId": "AKIAJ6JVXIXMFGE6I7WA",
+  "secretAccessKey": "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",
   "region": "us-east-1",
   "bucket": "rm-zoobird"
 };
@@ -21,6 +21,7 @@ export function signing(req, res) {
   var path = 'zoo-bird/' + fileName;
   var readType = 'public-read';
   var s3Policy = {
+    "expiration": "20020-01-01T00:00:00Z",
     'conditions': [{
       'bucket': aws.bucket
     },

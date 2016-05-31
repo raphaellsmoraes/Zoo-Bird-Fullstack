@@ -27,7 +27,7 @@ export function sendEmail(req, res) {
     //Specify email data
     from: from_who,
     //The email to contact
-    to: "raphael.lsmoraes@gmail.com",
+    to: "mauriciozoobird@outlook.com",
     //Subject and text data
     subject: decodeURIComponent(params.subject),
     html: 'Olá <b>Mauricio</b> <br> Você tem uma nova mensagem:<br><br><br>' +

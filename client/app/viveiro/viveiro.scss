@@ -48,10 +48,10 @@ $break-large: 1200px;
       height: 400px;
     }
     @media screen and (min-width: $break-medium) {
-      height: 450px;
+      height: 525px;
     }
     @media screen and (min-width: $break-large) {
-      height: 500px;
+      height: 550px;
     }
     float: left;
     position: relative;
