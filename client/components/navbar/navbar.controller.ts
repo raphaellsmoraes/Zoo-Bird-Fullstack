@@ -11,6 +11,10 @@ class NavbarController {
       'link': '/aboutus'
     },
     {
+      'title': 'NOTÍCIAS',
+      'link': '/noticias'
+    },
+    {
       'title': 'VIVEIRO',
       'link': '/viveiro'
     },

@@ -4,6 +4,7 @@ angular.module('zoobirdApp', [
     'zoobirdApp.auth',
     'zoobirdApp.admin',
     'zoobirdApp.aboutus',
+    'zoobirdApp.noticias',
     'zoobirdApp.diferencial',
     'zoobirdApp.contact',
     'zoobirdApp.viveiro',
