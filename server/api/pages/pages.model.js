@@ -35,6 +35,10 @@ var PagesSchema = new mongoose.Schema({
       photo: String
     }
   },
+  noticias: {
+    top: {photo: String},
+    news: []
+  },
   diferencial: {
     left: {
       text: String,

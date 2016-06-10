@@ -131,6 +131,33 @@
       $scope.deleteSlider = function (img) {
         $scope.model.pages.home.slider.splice(img, 1);
       };
+
+      $scope.openNews = function (size, nnews) {
+        var modalInstance = $uibModal.open({
+          animation: $scope.animationsEnabled,
+          templateUrl: 'myNewsModal.html',
+          controller: 'NewsModalInstanceCtrl',
+          size: size,
+          resolve: {
+            nnews: function () {
+              return nnews;
+            }
+          }
+        });
+
+        modalInstance.result.then(function (selectedItem) {
+          var index = $scope.model.pages.noticias.news.indexOf(selectedItem);
+          if (index !== -1) {
+            $scope.model.pages.noticias.news[index] = selectedItem;
+          } else {
+            if ($scope.model.pages.noticias.news.indexOf(selectedItem) === -1) {
+              $scope.model.pages.noticias.news.push(selectedItem);
+            }
+          }
+        }, function () {
+          $log.info('Modal dismissed at: ' + new Date());
+        });
+      };
     }
   }
 
@@ -468,7 +495,73 @@
       };
     }
   }
+
+  class NewsModalInstanceCtrl {
+    constructor($scope, $uibModalInstance, nnews, Upload, $http) {
+      if (nnews === undefined) {
+        nnews = {};
+      }
+      $scope.nnews = nnews;
+      $scope.onFileSelect = function (files, page, position) {
+        if (files.length > 0) {
+          var filename = files[0].name;
+          var type = files[0].type;
+          var query = {
+            filename: filename,
+            type: type
+          };
+
+          $http.post('/api/signing', query)
+            .success(function (result) {
+              Upload.upload({
+                  url: result.url, //s3Url
+                  transformRequest: function (data, headersGetter) {
+                    var headers = headersGetter();
+                    delete headers.Authorization;
+                    return data;
+                  },
+                  fields: result.fields, //credentials
+                  method: 'POST',
+                  file: files[0]
+                })
+                .success(function (data, status, headers, config) {
+                  // file is uploaded successfully
+                  let parser = new DOMParser();
+                  let xmlDoc = parser.parseFromString(data, 'text/xml');
+
+                  if (page === 'modal') {
+                    if ($scope.nnews.photos === undefined) {
+                      $scope.nnews.photos = [];
+                    }
+                    if ($scope.nnews.photos.indexOf(
+                        xmlDoc.getElementsByTagName('Location')[0].childNodes[0].nodeValue) !== 0) {
+                      $scope.nnews.photos.push(String(xmlDoc.getElementsByTagName('Location')[0].childNodes[0].nodeValue));
+                    }
+                  }
+                });
+            })
+            .error(function (data, status, headers, config) {
+              // called asynchronously if an error occurs
+              // or server returns response with an error status.
+            });
+        }
+      };
+      $scope.ok = function () {
+        $uibModalInstance.close($scope.nnews);
+      };
+      $scope.cancel = function () {
+        $uibModalInstance.dismiss('cancel');
+      };
+    }
+  }
+
   angular.module('zoobirdApp.admin')
     .controller('AdminController', AdminController)
-    .controller('ModalInstanceCtrl', ModalInstanceCtrl);
+    .controller('ModalInstanceCtrl', ModalInstanceCtrl)
+    .controller('NewsModalInstanceCtrl', NewsModalInstanceCtrl)
+    .filter('trustThisUrl', ['$sce', function ($sce) {
+      return function (val) {
+        return $sce.trustAsResourceUrl(val);
+      };
+    }]);
 })();
