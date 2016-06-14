@@ -29,16 +29,16 @@
           $http.post('/api/signing', query)
             .success(function (result) {
               Upload.upload({
-                  url: result.url, //s3Url
-                  transformRequest: function (data, headersGetter) {
-                    var headers = headersGetter();
-                    delete headers.Authorization;
-                    return data;
-                  },
-                  fields: result.fields, //credentials
-                  method: 'POST',
-                  file: files[0]
-                })
+                url: result.url, //s3Url
+                transformRequest: function (data, headersGetter) {
+                  var headers = headersGetter();
+                  delete headers.Authorization;
+                  return data;
+                },
+                fields: result.fields, //credentials
+                method: 'POST',
+                file: files[0]
+              })
                 .success(function (data, status, headers, config) {
                   // file is uploaded successfully
                   let parser = new DOMParser();
@@ -85,6 +85,13 @@
                   } else if (page === 'viveiro') {
                     if (position === 'top') {
                       $scope.model.pages.viveiro.top.photo = xmlDoc.getElementsByTagName('Location')[0].childNodes[0].nodeValue;
+                    }
+                  } else if (page === 'noticias') {
+                    if ($scope.model.pages.noticias.top === undefined) {
+                      $scope.model.pages.noticias.top = {};
+                    }
+                    if (position === 'top') {
+                      $scope.model.pages.noticias.top.photo = xmlDoc.getElementsByTagName('Location')[0].childNodes[0].nodeValue;
                     }
                   }
                 });
@@ -147,10 +154,25 @@
 
         modalInstance.result.then(function (selectedItem) {
           var index = $scope.model.pages.noticias.news.indexOf(selectedItem);
+          let today = new Date();
+          let dd = today.getDate();
+          let mm = today.getMonth() + 1; //January is 0!
+          let yyyy = today.getFullYear();
+
+          if (dd < 10) {
+            dd = '0' + dd;
+          }
+
+          if (mm < 10) {
+            mm = '0' + mm;
+          }
+
           if (index !== -1) {
+            selectedItem.date = dd + '/' + mm + '/' + yyyy;
             $scope.model.pages.noticias.news[index] = selectedItem;
           } else {
             if ($scope.model.pages.noticias.news.indexOf(selectedItem) === -1) {
+              selectedItem.date = dd + '/' + mm + '/' + yyyy;
               $scope.model.pages.noticias.news.push(selectedItem);
             }
           }
@@ -158,6 +180,19 @@
           $log.info('Modal dismissed at: ' + new Date());
         });
       };
+
+      $scope.removeNews = function (index) {
+        if (window.confirm('Você deseja remover esta notícia?')) {
+          $scope.model.pages.noticias.news.splice(index, 1);
+        }
+      };
+
+      $scope.removeViveiro = function (index) {
+        if (window.confirm('Você deseja remover esta notícia?')) {
+          $scope.model.pages.viveiro.birds.splice(index, 1);
+        }
+      };
+
     }
   }
 
@@ -167,6 +202,11 @@
         bird = {};
       }
       $scope.nbird = bird;
+      $scope.removeInnerObject = function (index) {
+        if (window.confirm('Você deseja remover esta imagem?')) {
+          $scope.nbird.photos.splice(index, 1);
+        }
+      };
       $scope.countryList =
         [{name: 'Afghanistan', code: 'AF'}, {name: 'Åland Islands', code: 'AX'}, {
           name: 'Albania',
@@ -455,16 +495,16 @@
           $http.post('/api/signing', query)
             .success(function (result) {
               Upload.upload({
-                  url: result.url, //s3Url
-                  transformRequest: function (data, headersGetter) {
-                    var headers = headersGetter();
-                    delete headers.Authorization;
-                    return data;
-                  },
-                  fields: result.fields, //credentials
-                  method: 'POST',
-                  file: files[0]
-                })
+                url: result.url, //s3Url
+                transformRequest: function (data, headersGetter) {
+                  var headers = headersGetter();
+                  delete headers.Authorization;
+                  return data;
+                },
+                fields: result.fields, //credentials
+                method: 'POST',
+                file: files[0]
+              })
                 .success(function (data, status, headers, config) {
                   // file is uploaded successfully
                   let parser = new DOMParser();
@@ -502,6 +542,11 @@
         nnews = {};
       }
       $scope.nnews = nnews;
+      $scope.removeInnerObject = function (index) {
+        if (window.confirm('Você deseja remover esta imagem?')) {
+          $scope.nnews.image = undefined;
+        }
+      };
       $scope.onFileSelect = function (files, page, position) {
         if (files.length > 0) {
           var filename = files[0].name;
@@ -514,29 +559,23 @@
           $http.post('/api/signing', query)
             .success(function (result) {
               Upload.upload({
-                  url: result.url, //s3Url
-                  transformRequest: function (data, headersGetter) {
-                    var headers = headersGetter();
-                    delete headers.Authorization;
-                    return data;
-                  },
-                  fields: result.fields, //credentials
-                  method: 'POST',
-                  file: files[0]
-                })
+                url: result.url, //s3Url
+                transformRequest: function (data, headersGetter) {
+                  var headers = headersGetter();
+                  delete headers.Authorization;
+                  return data;
+                },
+                fields: result.fields, //credentials
+                method: 'POST',
+                file: files[0]
+              })
                 .success(function (data, status, headers, config) {
                   // file is uploaded successfully
                   let parser = new DOMParser();
                   let xmlDoc = parser.parseFromString(data, 'text/xml');
 
-                  if (page === 'modal') {
-                    if ($scope.nnews.photos === undefined) {
-                      $scope.nnews.photos = [];
-                    }
-                    if ($scope.nnews.photos.indexOf(
-                        xmlDoc.getElementsByTagName('Location')[0].childNodes[0].nodeValue) !== 0) {
-                      $scope.nnews.photos.push(String(xmlDoc.getElementsByTagName('Location')[0].childNodes[0].nodeValue));
-                    }
+                  if (page === 'NewsModal') {
+                    $scope.nnews.image = String(xmlDoc.getElementsByTagName('Location')[0].childNodes[0].nodeValue);
                   }
                 });
             })

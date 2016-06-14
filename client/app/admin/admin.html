@@ -117,7 +117,8 @@
           Image thumbnail: <img ng-src="{{model.pages.noticias.top.photo}}" style="height: 75px; width: 75px;">
         </div>
         <div class="container">
-          <a class="new text-right col-md-12" ng-click="openNews('lg')"><span class="fa fa-plus-circle fa-2x"></span></a>
+          <a class="new text-right col-md-12" ng-click="openNews('lg')"><span
+            class="fa fa-plus-circle fa-2x"></span></a>
 
           <script type="text/ng-template" id="myNewsModal.html">
             <div class="modal-header">
@@ -131,10 +132,14 @@
                 </div>
                 <div class="form-group">
                   <label>Imagem:</label>
-                  <input type="file" ngf-select ngf-change="onFileSelect($files, 'NewsModal', '1')" class="form-control">
+                  <input type="file" ngf-select ngf-change="onFileSelect($files, 'NewsModal', '1')"
+                         class="form-control">
                   <div class="form-group">
                     Image thumbnail:
-                    <img ng-src="nnews.image" style="height: 75px; width: 75px;">
+                    <img ng-src="{{nnews.image}}" style="height: 75px; width: 75px;">
+                    <a class="remove text-right right" ng-click="removeInnerObject($index)">
+                      <span class="fa fa-minus-circle fa-2x"></span>
+                    </a>
                   </div>
                 </div>
                 <div class="form-group">
@@ -157,7 +162,13 @@
             <li class="list-group-item" ng-repeat="news in model.pages.noticias.news">
               <div class="user-info center-block text-center" style="border: black 1px solid; cursor: pointer"
                    ng-click="openNews('lg', news)">
-                <strong>{{news.title}}</strong><br>
+                <div class="col-md-12">
+                  <span class="center-block"><strong>{{news.title}}</strong>
+                    <a class="remove text-right right" ng-click="removeNews($index)">
+                      <span class="fa fa-minus-circle fa-2x"></span>
+                    </a>
+                  </span>
+                </div>
               </div>
             </li>
           </ul>
@@ -218,7 +229,13 @@
                 </div>
                 <div class="form-group">
                   Image thumbnail:
-                  <img ng-repeat="image in nbird.photos" ng-src="{{image}}" style="height: 75px; width: 75px;">
+                  <div class="col-md-12" ng-repeat="image in nbird.photos">
+                    <img ng-src="{{image}}"
+                         style="height: 75px; width: 75px;">
+                    <a class="remove text-right right" ng-click="removeInnerObject($index)">
+                      <span class="fa fa-minus-circle fa-2x"></span>
+                    </a>
+                  </div>
                 </div>
               </form>
               Selected: <code>{{ nbird }}</code>
@@ -234,6 +251,9 @@
                    ng-click="open('lg', bird)">
                 <strong>{{bird.name}}</strong><br>
                 <span class="text-muted">{{bird.price}}</span>
+                <a class="remove text-right right" ng-click="removeViveiro($index)">
+                  <span class="fa fa-minus-circle fa-2x"></span>
+                </a>
               </div>
             </li>
           </ul>

@@ -1,5 +1,5 @@
 <header class="hero-unit" id="banner">
-  <img class="img-responsive center-block" ng-src="{{model.pages.aboutus.top.photo}}">
+  <img class="img-responsive center-block" ng-src="{{model.pages.noticias.top.photo}}">
 </header>
 
 <div id="background-section" class="background-section">
@@ -12,16 +12,19 @@
 
         <div class="card radius shadowDepth1" ng-repeat="news in model.pages.noticias.news">
           <div class="card__image border-tlr-radius">
-            <img ng-src="news.image" alt="image" class="border-tlr-radius" ng-show="1===2">
-            <div class="video-container">
+            <img ng-src="{{news.image}}" alt="image" class="border-tlr-radius"
+                 ng-if="news.image != null || news.image != undefined && news.image.length > 0">
+            <div class="video-container"
+                 ng-if="news.videoUrl != null && news.videoUrl != undefined && news.videoUrl.length > 0">
               <iframe ng-src="{{news.videoUrl | trustThisUrl}}" frameborder="0" width="560" height="315"></iframe>
+              {{news.videoUrl.length === 0}}
             </div>
           </div>
 
           <div class="card__content card__padding">
             <div class="card__meta">
               <a href="#">On Time</a>
-              <time>17th March</time>
+              <time>{{news.date}}</time>
             </div>
 
             <article class="card__article">
