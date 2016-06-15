@@ -11,9 +11,10 @@ var aws = {
   "region": "us-east-1",
   "bucket": "rm-zoobird"
 };
-var crypto = require('crypto');
 
+var crypto = require('crypto');
 var s3Url = 'https://' + aws.bucket + '.s3.amazonaws.com';
+
 
 export function signing(req, res) {
   var request = req.body;

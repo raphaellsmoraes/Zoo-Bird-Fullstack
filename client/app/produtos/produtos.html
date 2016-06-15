@@ -53,9 +53,10 @@
             <div class="row">
               <!-- Product value -->
               <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12" style="position: absolute; bottom: 0">
-                <h4 class="text-left col-md-6 col-lg-6 col-xs-6 col-sm-6" style="font-weight: bold">VALOR:</h4>
-                <h4 class="text-right col-mg-6 col-lg-6 col-xs-6 col-sm-6" style="word-break: break-all">
-                  <span style="font-weight: bold">R$</span>
+                <h4 class="text-left col-md-2 col-lg-2 col-xs-2 col-sm-2" style="font-weight: bold">VALOR:</h4>
+                <h4 class="text-right col-mg-10 col-lg-10 col-xs-10 col-sm-10" style="word-break: break-all">
+                  <span style="font-weight: bold"
+                        ng-if="(product.price.includes('A partir de') != true) && (product.price.includes('Sob Consulta') != true)">R$</span>
                   {{product.price}}
                 </h4>
               </div>
