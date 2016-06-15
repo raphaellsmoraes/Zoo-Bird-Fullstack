@@ -259,7 +259,79 @@
           </ul>
         </div>
       </uib-tab>
-      <uib-tab index="4" heading="Diferencial">
+      <uib-tab index="4" heading="Produtos">
+        <div class="row form-group">
+          <label>Imagem topo</label>
+          <input type="file" ngf-select ngf-change="onFileSelect($files, 'produtos', 'top')" class="form-control">
+          Image thumbnail: <img ng-src="{{model.pages.produtos.top.photo}}" style="height: 75px; width: 75px;">
+        </div>
+        <div class="container">
+          <a class="new text-right col-md-12" ng-click="openProduto('lg')"><span
+            class="fa fa-plus-circle fa-2x"></span></a>
+
+          <script type="text/ng-template" id="ProdutosModalContent.html">
+            <div class="modal-header">
+              <h3 class="modal-title">Adicionar novo produto</h3>
+            </div>
+            <div class="modal-body">
+              <form role="form">
+                <div class="form-group">
+                  <label>Nome:</label>
+                  <input type="text" class="form-control" ng-model="product.name">
+                </div>
+                <div class="form-group">
+                  <label>Descrição:</label>
+                  <textarea ng-model="product.description" class="form-control"></textarea>
+                </div>
+                <div class="form-group">
+                  <label>Preço:</label>
+                  <input type="text" ng-model="product.price" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Pic 1:</label>
+                  <input type="file" ngf-select ngf-change="onFileSelect($files, 'modal', '1')" class="form-control">
+                  <label>Pic 2:</label>
+                  <input type="file" ngf-select ngf-change="onFileSelect($files, 'modal', '2')" class="form-control">
+                  <label>Pic 3:</label>
+                  <input type="file" ngf-select ngf-change="onFileSelect($files, 'modal', '3')" class="form-control">
+                  <label>Pic 4:</label>
+                  <input type="file" ngf-select ngf-change="onFileSelect($files, 'modal', '4')" class="form-control">
+                  <label>Pic 5:</label>
+                  <input type="file" ngf-select ngf-change="onFileSelect($files, 'modal', '5')" class="form-control">
+                </div>
+                <div class="form-group">
+                  Image thumbnail:
+                  <div class="col-md-12" ng-repeat="image in product.photos">
+                    <img ng-src="{{image}}"
+                         style="height: 75px; width: 75px;">
+                    <a class="remove text-right right" ng-click="removeInnerObject($index)">
+                      <span class="fa fa-minus-circle fa-2x"></span>
+                    </a>
+                  </div>
+                </div>
+              </form>
+              Selected: <code>{{ product }}</code>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-primary" type="button" ng-click="ok()">Salvar</button>
+              <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+            </div>
+          </script>
+          <ul class="list-group user-list">
+            <li class="list-group-item" ng-repeat="product in model.pages.produtos.products">
+              <div class="user-info center-block text-center" style="border: black 1px solid; cursor: pointer"
+                   ng-click="openProduto('lg', product)">
+                <strong>{{product.name}}</strong><br>
+                <span class="text-muted">{{product.price}}</span>
+                <a class="remove text-right right" ng-click="removeProduto($index)">
+                  <span class="fa fa-minus-circle fa-2x"></span>
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </uib-tab>
+      <uib-tab index="5" heading="Diferencial">
         <ng-form name="nestedForm">
           <div class="form-group">
             <div class="row">
@@ -303,7 +375,7 @@
           </div>
         </ng-form>
       </uib-tab>
-      <uib-tab index="5" heading="Contato">
+      <uib-tab index="6" heading="Contato">
         <ng-form name="nestedForm">
           <div class="form-group">
             <div class="row">

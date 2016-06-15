@@ -93,6 +93,13 @@
                     if (position === 'top') {
                       $scope.model.pages.noticias.top.photo = xmlDoc.getElementsByTagName('Location')[0].childNodes[0].nodeValue;
                     }
+                  } else if (page === 'produtos') {
+                    if ($scope.model.pages.produtos.top === undefined) {
+                      $scope.model.pages.produtos.top = {};
+                    }
+                    if (position === 'top') {
+                      $scope.model.pages.produtos.top.photo = xmlDoc.getElementsByTagName('Location')[0].childNodes[0].nodeValue;
+                    }
                   }
                 });
             })
@@ -181,6 +188,49 @@
         });
       };
 
+      $scope.openProduto = function (size, product) {
+        var modalInstance = $uibModal.open({
+          animation: $scope.animationsEnabled,
+          templateUrl: 'ProdutosModalContent.html',
+          controller: 'ProdutosModalInstanceCtrl',
+          size: size,
+          resolve: {
+            product: function () {
+              return product;
+            }
+          }
+        });
+
+        modalInstance.result.then(function (selectedItem) {
+          var index = $scope.model.pages.produtos.products.indexOf(selectedItem);
+          let today = new Date();
+          let dd = today.getDate();
+          let mm = today.getMonth() + 1; //January is 0!
+          let yyyy = today.getFullYear();
+
+          if (dd < 10) {
+            dd = '0' + dd;
+          }
+
+          if (mm < 10) {
+            mm = '0' + mm;
+          }
+
+          if (index !== -1) {
+            selectedItem.date = dd + '/' + mm + '/' + yyyy;
+            $scope.model.pages.produtos.products[index] = selectedItem;
+          } else {
+            if ($scope.model.pages.produtos.products.indexOf(selectedItem) === -1) {
+              selectedItem.date = dd + '/' + mm + '/' + yyyy;
+              $scope.model.pages.produtos.products.push(selectedItem);
+            }
+          }
+        }, function () {
+          $log.info('Modal dismissed at: ' + new Date());
+        });
+      };
+
+
       $scope.removeNews = function (index) {
         if (window.confirm('Você deseja remover esta notícia?')) {
           $scope.model.pages.noticias.news.splice(index, 1);
@@ -193,6 +243,11 @@
         }
       };
 
+      $scope.removeProduto = function (index) {
+        if (window.confirm('Você deseja remover este produto?')) {
+          $scope.model.pages.produtos.products.splice(index, 1);
+        }
+      };
     }
   }
 
@@ -594,10 +649,75 @@
     }
   }
 
+  class ProdutosModalInstanceCtrl {
+    constructor($scope, $uibModalInstance, product, Upload, $http) {
+      if (product === undefined) {
+        product = {};
+      }
+      $scope.product = product;
+      $scope.removeInnerObject = function (index) {
+        if (window.confirm('Você deseja remover esta imagem?')) {
+          $scope.product.photos.splice(index, 1);
+        }
+      };
+
+      $scope.onFileSelect = function (files, page, position) {
+        if (files.length > 0) {
+          var filename = files[0].name;
+          var type = files[0].type;
+          var query = {
+            filename: filename,
+            type: type
+          };
+          $http.post('/api/signing', query)
+            .success(function (result) {
+              Upload.upload({
+                url: result.url, //s3Url
+                transformRequest: function (data, headersGetter) {
+                  var headers = headersGetter();
+                  delete headers.Authorization;
+                  return data;
+                },
+                fields: result.fields, //credentials
+                method: 'POST',
+                file: files[0]
+              })
+                .success(function (data, status, headers, config) {
+                  // file is uploaded successfully
+                  let parser = new DOMParser();
+                  let xmlDoc = parser.parseFromString(data, 'text/xml');
+
+                  if (page === 'modal') {
+                    if ($scope.product.photos === undefined) {
+                      $scope.product.photos = [];
+                    }
+                    if ($scope.product.photos.indexOf(
+                        xmlDoc.getElementsByTagName('Location')[0].childNodes[0].nodeValue) !== 0) {
+                      $scope.product.photos.push(String(xmlDoc.getElementsByTagName('Location')[0].childNodes[0].nodeValue));
+                    }
+                  }
+                });
+            })
+            .error(function (data, status, headers, config) {
+              // called asynchronously if an error occurs
+              // or server returns response with an error status.
+            });
+        }
+      };
+      $scope.ok = function () {
+        $uibModalInstance.close($scope.product);
+      };
+      $scope.cancel = function () {
+        $uibModalInstance.dismiss('cancel');
+      };
+    }
+  }
+
   angular.module('zoobirdApp.admin')
     .controller('AdminController', AdminController)
     .controller('ModalInstanceCtrl', ModalInstanceCtrl)
     .controller('NewsModalInstanceCtrl', NewsModalInstanceCtrl)
+    .controller('ProdutosModalInstanceCtrl', ProdutosModalInstanceCtrl)
     .filter('trustThisUrl', ['$sce', function ($sce) {
       return function (val) {
         return $sce.trustAsResourceUrl(val);

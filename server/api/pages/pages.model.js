@@ -67,6 +67,12 @@ var PagesSchema = new mongoose.Schema({
     },
     birds: []
   },
+  produtos: {
+    top: {
+      photo: String
+    },
+    products: []
+  },
   active: Boolean
 });
 

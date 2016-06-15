@@ -19,6 +19,10 @@ class NavbarController {
       'link': '/viveiro'
     },
     {
+      'title': 'PRODUTOS',
+      'link': '/produtos'
+    },
+    {
       'title': 'DIFERENCIAL',
       'link': '/diferencial'
     },

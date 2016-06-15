@@ -8,6 +8,7 @@ angular.module('zoobirdApp', [
     'zoobirdApp.diferencial',
     'zoobirdApp.contact',
     'zoobirdApp.viveiro',
+    'zoobirdApp.produtos',
     'zoobirdApp.constants',
     'ngCookies',
     'ngResource',
